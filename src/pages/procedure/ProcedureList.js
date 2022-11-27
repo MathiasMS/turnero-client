@@ -69,11 +69,11 @@ const CategoriesGrid = () => {
     }
 
     const columns = [
-        { field: 'name', headerName: 'Nombre', width: 200, sortable: false},
-        { field: 'description', headerName: 'Descripcion', width: 200,  sortable: false},
-        { field: 'category', headerName: 'Categoria', width: 150,  sortable: false, valueGetter: ({ row }) => row.category ? row.category.name : ''},
-        { field: 'fromDate', headerName: 'Fecha inicio', width: 200, sortable: false, valueGetter: ({ row }) => (row.fromDate ? moment(row.fromDate).format('L') : '-')},
-        { field: 'toDate', headerName: 'Fecha fin', width: 200, sortable: false, valueGetter: ({ row }) => (row.toDate ? moment(row.toDate).format('L') : '-')},
+        { field: 'name', headerName: 'Nombre', width: 200, sortable: false, filterable: false},
+        { field: 'description', headerName: 'Descripcion', width: 200,  sortable: false, filterable: false},
+        { field: 'category', headerName: 'Categoria', width: 150,  sortable: false, filterable: false, valueGetter: ({ row }) => row.category ? row.category.name : ''},
+        { field: 'fromDate', headerName: 'Fecha inicio', width: 200, sortable: false, filterable: false, valueGetter: ({ row }) => (row.fromDate ? moment(row.fromDate).format('L') : '-')},
+        { field: 'toDate', headerName: 'Fecha fin', width: 200, sortable: false, filterable: false, valueGetter: ({ row }) => (row.toDate ? moment(row.toDate).format('L') : '-')},
         {
             field: 'actions',
             headerName: 'Actions',

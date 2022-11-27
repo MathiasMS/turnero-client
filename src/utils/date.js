@@ -25,7 +25,7 @@ export const createCalendar = (fromDate, toDate, fraction) => {
 
 export const formatDay = (currentDate, hours) => {
     const day = currentDate.startOf("day").add(6, "hours").format();
-    const formattedDay = currentDate.startOf("day").add(6, "hours").format("LL")
+    const formattedDay = currentDate.startOf("day").add(6, "hours").format("dddd, LL")
 
     return {
         day,

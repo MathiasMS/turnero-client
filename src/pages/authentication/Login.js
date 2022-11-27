@@ -44,7 +44,7 @@ const Login = () => {
 
     useEffect(() => {
         if(isLogged){
-            navigate('/categorias')
+            navigate('/tramites')
         }
     }, [])
 

@@ -41,7 +41,7 @@ const AppointmentCalendar = ({ calendar, onSuccess, procedure }) => {
     }
 
     return (
-        <Box sx={{ display: 'flex', mt: 3}}>
+        <Box sx={{ display: 'flex', mt: 3, height: '500px', overflow: 'scroll'}}>
             {
                 calendar.map(day => {
                     const { date, hours } = day

@@ -12,6 +12,7 @@ import Appointment from '../pages/appointment/Appointment';
 const AppRouter = () => {
     return (
         <Routes>
+            <Route path="/" element={<Login />}/>
             <Route path="/login" element={<Login />}/>
             <Route path="/registro" element={<Register />}/>
             <Route path="/turnos" element={<Appointment />}/>

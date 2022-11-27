@@ -32,16 +32,15 @@ const Appointment = () => {
     const [proceduresAvailabilityLoading, setProceduresAvailabilityLoading] = useState(false)
 
     const handleChange = (event, value) => {
-        console.log('VALUE', value)
         setPage(value);
     };
 
     const getCategories = async() => {
         try {
-            const { data } = await httpClient.get(apiUrls.categories.getAll)
+            const { data } = await httpClient.get(apiUrls.categories.getAllPublic)
 
             if (data) {
-                setCategories(data.items)
+                setCategories(data)
             }
         } catch (e) {
             notifiyErrors(e)
@@ -52,7 +51,7 @@ const Appointment = () => {
 
     const getProcedures = async() => {
         try {
-            const { data } = await httpClient.get(apiUrls.procedures.getAll, { params: { category } })
+            const { data } = await httpClient.get(apiUrls.procedures.getAllPublic, { params: { category } })
 
             if (data) {
                 setProcedures(data)
@@ -114,11 +113,9 @@ const Appointment = () => {
 
     const procedureData = procedures.filter(x => x.id === procedure)
 
+    console.log(categories)
     return (
         <Container>
-            <Box sx={{ display: "flex"}}>
-                <BackButton />
-            </Box>
             <Header title="Solicitar Turno" action={onCancel} color="error" actionLabel="Cancelar Turno"/>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '15px'}}>
                 <FormControl sx={{ width: '30%' }}>
@@ -140,7 +137,7 @@ const Appointment = () => {
                 </FormControl>
 
                 <FormControl sx={{ width: '30%'}}>
-                    <InputLabel id="demo-simple-select-label">Tramite</InputLabel>
+                    <InputLabel id="demo-simple-select-label">Tramites</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"

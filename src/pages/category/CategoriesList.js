@@ -44,7 +44,7 @@ const CategoriesGrid = () => {
 
     const getCategories = async() => {
         try {
-            const { data } = await httpClient.get(apiUrls.categories.getAll, {
+            const { data } = await httpClient.get(apiUrls.categories.getAllPaginated, {
                 params: {...state}
             })
 
@@ -82,10 +82,10 @@ const CategoriesGrid = () => {
     }
 
     const columns = [
-        { field: 'name', headerName: 'Nombre', width: 400, sortable: false},
-        { field: 'quota', headerName: 'Cupo', width: 100,  sortable: false},
-        { field: 'fraction', headerName: 'Fraccion', width: 100,  sortable: false},
-        { field: 'createdAt', headerName: 'Creado en', width: 200, sortable: false, valueGetter: ({ row }) => (new Date(row.createdAt).toLocaleString())},
+        { field: 'name', headerName: 'Nombre', width: 400, sortable: false, filterable: false},
+        { field: 'quota', headerName: 'Cupo', width: 100,  sortable: false, filterable: false},
+        { field: 'fraction', headerName: 'Fraccion', width: 100,  sortable: false, filterable: false},
+        { field: 'createdAt', headerName: 'Creado en', width: 200, sortable: false, filterable: false, valueGetter: ({ row }) => (new Date(row.createdAt).toLocaleString())},
         {
             field: 'actions',
             headerName: 'Actions',

@@ -34,7 +34,9 @@ export const apiUrls = {
         login: `${apiBase}/authentication/login`
     },
     categories: {
+        getAllPaginated: `${apiBase}/categories/paginated`,
         getAll: `${apiBase}/categories`,
+        getAllPublic: `${apiBase}/categories/public`,
         getOne: id => `${apiBase}/categories/${id}`,
         create: `${apiBase}/categories`,
         edit: id => `${apiBase}/categories/${id}`,
@@ -43,6 +45,7 @@ export const apiUrls = {
     procedures: {
         getAllPaginated: `${apiBase}/procedures/paginated`,
         getAll: `${apiBase}/procedures`,
+        getAllPublic: `${apiBase}/procedures/public`,
         getAllProceduresAvailability: id => `${apiBase}/procedures/${id}/procedures-availability`,
         getOne: id => `${apiBase}/procedures/${id}`,
         create: `${apiBase}/procedures`,

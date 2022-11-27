@@ -46,7 +46,7 @@ const CreateProcedure = () => {
             const { data } = await httpClient.get(apiUrls.categories.getAll)
 
             if (data) {
-               setCategories(data.items)
+               setCategories(data)
             }
         } catch (e) {
             notifiyErrors(e)
