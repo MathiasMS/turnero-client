@@ -12,16 +12,22 @@ const StyledContainer = styled(Box)`
 
 const ConfirmCancel = ({ onClose }) => {
     const [number, setNumber] = useState('')
+    const [email, setEmail] = useState('')
     const [confirmedData, setConfirmedData] = useState(null)
 
     const handleNumberChange = (event) => {
         setNumber(event.target.value);
     }
 
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    }
+
     const onCancel = async() => {
         try {
             const { data } = await httpClient.post(apiUrls.proceduresAvailability.cancel, {
                 number,
+                email
             })
 
             if (data) {
@@ -40,7 +46,15 @@ const ConfirmCancel = ({ onClose }) => {
                         placeholder="Coloque el numero de turno a cancelar."
                         value={number}
                         fullWidth
+                        sx={{ mb: 2}}
                         onChange={handleNumberChange}
+                    />
+                    <TextField
+                        placeholder="Coloque el email de turno a cancelar."
+                        value={email}
+                        type="email"
+                        fullWidth
+                        onChange={handleEmailChange}
                     />
                     <Box sx={{ display: 'flex', justifyContent: 'end'}}>
                         <Box sx={{ display: 'flex', gap: 1, mt: 3}}>

@@ -18,7 +18,8 @@ const Header = ({
     title,
     actionLabel,
     action,
-    color = 'primary'
+    color = 'primary',
+    actionDisabled = false,
 }) => (
     <StyledHeaderContainer>
         <StyledTitleContainer>
@@ -27,7 +28,7 @@ const Header = ({
         {
             actionLabel && action && (
                 <Box>
-                    <Button variant="contained" color={color} onClick={action}>
+                    <Button variant="contained" disabled={actionDisabled} color={color} onClick={action}>
                         {actionLabel}
                     </Button>
                 </Box>

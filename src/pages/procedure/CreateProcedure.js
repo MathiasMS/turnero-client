@@ -22,6 +22,7 @@ const CreateProcedure = () => {
     const [category, setCategory] = useState('');
     const [calendar, setCalendar] = useState([])
     const [selectedDays, setSelectedDays] = useState({})
+    const [createLoading, setCreateLoading] = useState(false);
 
     const [categoryQuota, setCategoryQuota] = useState(null)
 
@@ -32,7 +33,6 @@ const CreateProcedure = () => {
         setCategoryQuota(selectedCategory.fraction)
     };
 
-    console.log(categoryQuota)
     const handleDescriptionChange = (event) => {
         setDescription(event.target.value);
     };
@@ -87,6 +87,7 @@ const CreateProcedure = () => {
 
     const handleCreate = async() => {
         try {
+            setCreateLoading(true)
             const { data } = await httpClient.post(apiUrls.procedures.create, {
                 name,
                 description,
@@ -102,6 +103,8 @@ const CreateProcedure = () => {
             }
         } catch (e) {
             notifiyErrors(e)
+        } finally {
+            setCreateLoading(false)
         }
     }
 
@@ -110,7 +113,7 @@ const CreateProcedure = () => {
             <Box sx={{ display: "flex"}}>
                 <BackButton />
             </Box>
-            <Header title="Tramite nuevo" action={handleCreate} actionLabel="Crear tramite"/>
+            <Header title="Tramite nuevo" action={handleCreate} actionDisabled={createLoading} actionLabel={createLoading ? "Creando.." : "Crear tramite" }/>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '15px'}}>
                 <Box sx={{ display: 'flex', gap: '15px', width: '70%' }}>
                     <TextField

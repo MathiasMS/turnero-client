@@ -113,7 +113,6 @@ const Appointment = () => {
 
     const procedureData = procedures.filter(x => x.id === procedure)
 
-    console.log(categories)
     return (
         <Container>
             <Header title="Solicitar Turno" action={onCancel} color="error" actionLabel="Cancelar Turno"/>

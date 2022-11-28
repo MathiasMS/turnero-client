@@ -47,8 +47,3 @@ export const getHours = (currentDate, fraction = 20) => {
 
     return hours;
 };
-
-// createCalendar(fromDate, toDate)
-
-// const todayPlus = date(today).add(fraction, "minutes");
-// console.log(todayPlus.format("LLL"));
