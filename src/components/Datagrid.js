@@ -93,48 +93,38 @@ const DataGrid = ({
     }, [handleQueryChange, isMounted, state]);
 
     return (
-        <Grid
-            container
-            flexGrow={1}
-            sx={{
-                minHeight: 700,
-                width: 'inherit',
-                mt: 2,
+        <MuiDataGrid
+            autoHeight={true}
+            sortingMode={sortingMode}
+            pagination={true}
+            paginationMode={paginationMode}
+            checkboxSelection={checkboxSelection}
+            onRowClick={onRowClick}
+            onCellClick={onCellClick}
+            getRowId={getRowId}
+            onSortModelChange={handleSortModelChange}
+            onPageChange={(newPage) => {
+                handlePageChange(newPage);
             }}
-        >
-            <MuiDataGrid
-                autoHeight={true}
-                sortingMode={sortingMode}
-                pagination={true}
-                paginationMode={paginationMode}
-                checkboxSelection={checkboxSelection}
-                onRowClick={onRowClick}
-                onCellClick={onCellClick}
-                getRowId={getRowId}
-                onSortModelChange={handleSortModelChange}
-                onPageChange={(newPage) => {
-                    handlePageChange(newPage);
-                }}
-                onPageSizeChange={(newLimit) => {
-                    setState((prevState) => ({ ...prevState, limit: newLimit }));
-                }}
-                onSelectionModelChange={(newSelectionModel) => {
-                    setSelectionModel(newSelectionModel);
-                }}
-                disableSelectionOnClick
-                selectionModel={selectionModel}
-                columns={columns}
-                rows={rows}
-                rowCount={rowCount}
-                rowsPerPageOptions={[10,20,50]}
-                page={state.page}
-                pageSize={state.limit}
-                loading={loading}
-                sx={{
-                    border: 'none',
-                }}
-            />
-        </Grid>
+            onPageSizeChange={(newLimit) => {
+                setState((prevState) => ({ ...prevState, limit: newLimit }));
+            }}
+            onSelectionModelChange={(newSelectionModel) => {
+                setSelectionModel(newSelectionModel);
+            }}
+            disableSelectionOnClick
+            selectionModel={selectionModel}
+            columns={columns}
+            rows={rows}
+            rowCount={rowCount}
+            rowsPerPageOptions={[10,20,50]}
+            page={state.page}
+            pageSize={state.limit}
+            loading={loading}
+            sx={{
+                border: 'none',
+            }}
+        />
     );
 };
 

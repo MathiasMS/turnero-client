@@ -7,6 +7,7 @@ import AuthProvider from './providers/AuthProvider/AuthProvider';
 import NavBar from './components/NavBar';
 import AppDrawer from './components/AppDrawer';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { Box } from '@mui/material'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 function App() {
@@ -16,8 +17,10 @@ function App() {
           <LocalizationProvider dateAdapter={AdapterMoment}>
           <AuthProvider>
               <NavBar />
-              <AppDrawer />
-            <AppRouter />
+              <Box sx={{ display: 'flex'}}>
+                  <AppDrawer />
+                  <AppRouter />
+              </Box>
             <ToastContainer theme="colored" />
           </AuthProvider>
           </LocalizationProvider>
